@@ -2,6 +2,7 @@ import stockAnalysis
 import getdata
 
 fileName = "stocks.txt"
+THRESHOLD = 0.85
 
 if __name__ == '__main__':
 	with open(fileName) as f:
