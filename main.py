@@ -16,8 +16,10 @@ if __name__ == '__main__':
 			
 			for season in resultData:
 				print season
-				for val, sd in season:
-					if abs(val) > sd :
-						print str(val) + ' ' + str(sd)
+				for event in season:
+					for val, sd in event:
+						if abs(val) > sd :
+							
+							print "SPECIAL EVENT" + str(val) + ' ' + str(sd)
 			
 			print '\n'
