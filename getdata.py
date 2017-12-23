@@ -2,22 +2,28 @@
 import datetime
 import pandas as pd
 import numpy as np
+import pickle
 from pandas_datareader import data, wb
 
+PATH = './stock-data/'
+EXT = '.p'
 
 ## Functions
-def getMedian(stock, startYear, startMonth, startDay):
-	startDate = datetime.datetime(startYear,startMonth,startDay)
-	endDate = startDate + datetime.timedelta(days=91)
-	sd = data.DataReader(stock, "yahoo", startDate, endDate)
+def getMedian(stockData, startYear, startMonth, startDay, dayDuration):
+	startDate = datetime.datetime(startYear,startMonth,startDay) - datetime.datetime(startYear, 1, 1)
+	endDate = startDate + datetime.timedelta(days=dayDuration)
+	sd = stockData[startDate.days:endDate.days]
 	return np.median(sd.Close)
 
 def stockData(stock,startYear,endYear):
 	arr = []
-	for y in xrange(startYear, endYear):
-		arr.append(getMedian(stock,y -1,12,1))
-		arr.append(getMedian(stock,y,3,1))
-		arr.append(getMedian(stock,y,6,1))
-		arr.append(getMedian(stock,y,9,1))
+	
+	for year in xrange(startYear, endYear + 1):
+		filename = PATH + stock + '-' + str(year) + EXT
+		stockYear = pickle.load( open(filename, 'rb'))
+		
+		for month in xrange(1, 13):
+			arr.append(getMedian(stockYear, year, month, 1, 30))
+	
 	return arr
 
