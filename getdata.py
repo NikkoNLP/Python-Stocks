@@ -1,4 +1,3 @@
-#!/bin/python
 ## Purpose: Creates an array of medians for each 5 day period
 import datetime
 import pandas as pd

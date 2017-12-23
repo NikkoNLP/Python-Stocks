@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
 		
 		for stock in lines:
-			rawData = getdata.stockData(stock, 2010, 2012)
+			rawData = getdata.stockData(stock, 2000, 2018)
 			diffData = stockAnalysis.getDiff(rawData)
 			resultData = stockAnalysis.getMeans(diffData)
 			print stock + ":"
