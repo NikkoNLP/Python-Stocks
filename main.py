@@ -13,5 +13,8 @@ if __name__ == '__main__':
 			diffData = stockAnalysis.getDiff(rawData)
 			resultData = stockAnalysis.getMeans(diffData)
 			print stock + ":"
-			print resultData
+			
+			for season in resultData:
+				print season
+			
 			print '\n'
