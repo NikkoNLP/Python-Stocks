@@ -1,4 +1,3 @@
 MSFT
 NKE
-UAA
 DKS
