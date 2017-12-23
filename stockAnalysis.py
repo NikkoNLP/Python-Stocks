@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.stats import norm
 
 # Takes 1-D array of seasonal medians and returns an array 
 # of differences between that month and the next MAX_DATA_STEP months.
@@ -41,6 +42,8 @@ def getMeans(diffArr):
 	
 	return returnArr
 	
+def getCDF(mean, sd):
+	return 1 - norm.cdf(mean,sd)
 	
 	
 	

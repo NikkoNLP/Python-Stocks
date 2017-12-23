@@ -18,8 +18,7 @@ if __name__ == '__main__':
 				print season
 				for event in season:
 					for val, sd in event:
-						if abs(val) > sd :
-							
-							print "SPECIAL EVENT" + str(val) + ' ' + str(sd)
+						if stockAnalysis.getCDF(val,sd) > THRESHOLD:
+							print str(val) + ' ' + str(sd) + ':' + stockAnalysis.getCDF(val,sd)
 			
 			print '\n'
