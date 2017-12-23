@@ -1,5 +1,10 @@
 import numpy as np
 
+# Takes 1-D array of seasonal medians and returns an array 
+# of differences between that season and the next 3
+
+# input: [w1, sp1, su1, f1, ... wn, spn, sun, fn]
+# output: [[winter diffs],[spring diffs], [summer diffs], [fall diffs]]
 
 def getDiff(arr):
 	winterArr = []
@@ -33,11 +38,10 @@ def getDiff(arr):
 	
 	return [winterArr,springArr,summerArr,fallArr]
 
+#takes a 2-d array of differences and returns an array of the mean and s.d. for each difference:
+#input: [[winter diffs],[spring diffs], [summer diffs], [fall diffs]]
+#output: [[winter (mean,s.d),(mean,s.d)...],[sprint mean/s.d.], [summer mean/s.d.], [fall mean/s.d.]]
 def getMeans(diffArr):
-	#3-D array
-	#Year
-	#Season
-	#difference between season and season + x
 	returnArr = []
 	for seasonArr in diffArr:
 		returnArr.append(zip(np.mean(seasonArr, axis=0),np.std(seasonArr,axis=0)))
